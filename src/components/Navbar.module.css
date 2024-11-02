@@ -1,0 +1,18 @@
+.nav {
+  display: flex;
+  background-color: cadetblue;
+  padding: 1rem;
+  flex-direction: row;
+  justify-content: end;
+}
+.wel {
+  margin-right: auto;
+}
+a {
+  font-size: larger;
+}
+.btn1,
+.btn2,
+.btn3 {
+  margin-right: 10px;
+}

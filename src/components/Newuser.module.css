@@ -1,0 +1,87 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.inputform {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  animation: fadeIn 2s ease-in-out;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.inputform::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("../resources/image.png");
+  background-size: cover;
+  background-position: center;
+  filter: blur(1px);
+  z-index: -1;
+  opacity: 0.8;
+}
+
+.inputform p {
+  font-size: 75px;
+  font-weight: bold;
+  color: red;
+}
+
+.inputform form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.inputform input {
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 300px;
+  font-size: 16px;
+}
+
+.inputform input[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 20px;
+}
+
+.inputform input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+.inputform a {
+  text-decoration: none;
+  color: #007bff;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.inputform a:hover {
+  text-decoration: underline;
+}
+
+.invalid {
+  font-size: x-large;
+  font-weight: 300;
+  color: red;
+}
