@@ -107,10 +107,10 @@ const Checkout = () => {
         "http://127.0.0.1:5000/orders",
         orderDetails
       );
-
+      const orderId = response.data.order_id;
       toast({
         title: "Order Placed",
-        description: "Your order has been successfully placed!",
+        description: `Your order has been successfully placed! Order ID: ${orderId}`,
         status: "success",
         duration: 5000,
         isClosable: true,

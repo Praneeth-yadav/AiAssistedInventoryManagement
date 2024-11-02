@@ -264,26 +264,28 @@ def create_order():
     
         conn.commit()
 
+        order_id = cursor.lastrowid
         # Handle items if necessary (insert into a separate table)
-        for item in data['items']:
-            for product in item['data']:
-                # Assuming you have an order_items table to store items with the order_id
-                # You might want to get the last inserted order ID here
-                order_id = cursor.lastrowid  # Get the last inserted order ID
+        # for item in data['items']:
+        #     for product in item['data']:
+        #         # Assuming you have an order_items table to store items with the order_id
+        #         # You might want to get the last inserted order ID here
+        #         order_id = cursor.lastrowid  # Get the last inserted order ID
 
-                cursor.execute('''INSERT INTO order_items (order_id, product_id, item_name, price, quantity)
-                                VALUES (%s, %s, %s, %s, %s)''',
-                                (order_id, product['id'], product['item'], product['price'], product['quantity']))
+        #         cursor.execute('''INSERT INTO orders (order_id, product_id, item_name, price, quantity)
+        #                         VALUES (%s, %s, %s, %s, %s)''',
+        #                         (order_id, product['id'], product['item'], product['price'], product['quantity']))
         
         # Commit the items transaction
-        mysql.connection.commit()
+        # mysql.connection.commit()
         
-        return jsonify({"message": "Order created successfully!"}), 201
+        return jsonify({"message": "Order created successfully!", "order_id": order_id}), 201
         
     except Exception as e:
         print("Error creating order:", str(e))
         traceback.print_exc()
         return jsonify({"error": "An error occurred while creating the order."}), 500
+
 
 @app.route('/orders/<int:order_id>', methods=['GET'])
 def get_order_details(order_id):
@@ -454,8 +456,8 @@ def cart():
     
 # OpenAI API settings
 API_URL = "https://api.openai.com/v1/chat/completions"
-API_KEY = "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";
-
+# API_KEY = "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";
+API_KEY="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"
 
 
 @app.route('/api/getOrderDecision', methods=['POST'])
@@ -574,11 +576,15 @@ def update_order_status(orderId,status):
 @app.route('/api/getTransactionDecision', methods=['POST'])
 def get_transaction_decision():
     print("<<<<<<<<<------In getTransactionDecision------>>>>>")
+
     data = request.json
+    print("data",data)
+
     base64_image ="";# data.get('image')  # Base64 image should be sent under the key 'image'
     ticket_description = data.get('description')
     order_id = data.get('orderId')  # Extracting order details from the request
     order_details = get_order_details(order_id)  # Function to get order details
+    print("order_details",order_details)
     if not order_details:
         return jsonify({'error': 'Order not found'}), 404
 
@@ -622,7 +628,7 @@ def get_transaction_decision():
 
     response = requests.post(API_URL, headers=headers, json=json_request)
 
-    
+    print("response",response)
     if response.status_code == 200:
             decision = response.json().get('choices')[0]['message']['content'].strip()
             # Classify the decision into defined categories
