@@ -1,6 +1,6 @@
-### The Coffee Shop
+### The One Stop Shop
 
-The goal of this project is to develop an online coffee shop application that enables customers to create accounts, place orders, and allows coffee shop managers to manage the shop's inventory, track orders, and maintain the overall operation efficiently. The application will provide a user-friendly interface for both customers and coffee shop managers, enhancing the overall coffee shop experience.
+The goal of this project is to develop an online shop that enables customers to create accounts, place orders, and allows store managers to manage the store's inventory, track orders, and maintain the overall operation efficiently. The application will provide a user-friendly interface for both customers and store managers, enhancing the overall shopping experience.
 
 ## Scripts
 
@@ -39,29 +39,20 @@ Runs the Flask app in the development mode on port http://127.0.0.1:5000
 
 New user -> Register
 Existing user -> Login
-![TheCoffeeShop](./Images/login.png)
-
-![](./Images/register.png)
 
 ## Menu
 
 -> Menu Items
 -> User can search for item
 -> Increment decrement buttons to select number of items to order
-![](./Images/menu.png)
 
 ## Cart
-
-![](./Images/cart.png)
 
 ## Admin Dashboard
 
 -> Edit item description, item quantity, item price
 -> Add new item or delete item
-![](./Images/dashboard.png)
 
 ## Admin cart
 
 Admin can view all the orders and their total price along with the customer name
-![](./Images/orders.png)
-
