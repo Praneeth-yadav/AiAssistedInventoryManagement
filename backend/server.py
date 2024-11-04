@@ -21,7 +21,7 @@ x = datetime.datetime.now()
 count=0
 @app.route('/',methods=["GET","POST"])
 def get_time():
-    # Returning an api for showing in  reactjs
+    # Returning an gpt for showing in  reactjs
     return {
         'Name':"geek",
         "Age":"22",
@@ -456,9 +456,7 @@ def cart():
     
 # OpenAI API settings
 API_URL = "https://api.openai.com/v1/chat/completions"
-# API_KEY = "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";
-API_KEY="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"
-
+API_KEY="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"
 
 @app.route('/api/getOrderDecision', methods=['POST'])
 def get_order_decision():
